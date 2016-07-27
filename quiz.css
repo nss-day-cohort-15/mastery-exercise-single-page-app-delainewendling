@@ -1,16 +1,41 @@
-body {
+.carCard {
+  height: 380px;
+  margin-bottom: 20px;
+}
+.carInfo {
+  height: 50px;
+  text-align: center;
+}
+.description {
   font-size: 0.5em;
+  height: 100px;
+}
+.carYear {
+  text-align: center;
+  font-size: 0.75em;
+}
+.carsColor {
+  font-size: .45em;
+  text-align: center;
+}
+.carPrice {
+  font-size: 0.8em;
+  text-align: center;
 }
 .forSale {
+  display: inline-block;
   background-color: green;
   color: white;
   border: 1px solid black;
+  margin: 10px;
   padding: 10px;
 }
 
 .sold {
+  display: inline-block;
   background-color: red;
   color: white;
   border: 1px solid black;
+  margin: 10px auto;
   padding: 10px;
 }
