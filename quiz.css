@@ -1,0 +1,16 @@
+body {
+  font-size: 0.5em;
+}
+.forSale {
+  background-color: green;
+  color: white;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.sold {
+  background-color: red;
+  color: white;
+  border: 1px solid black;
+  padding: 10px;
+}

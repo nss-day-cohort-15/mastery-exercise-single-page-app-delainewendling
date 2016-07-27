@@ -15,7 +15,7 @@
       "year": "1996",
       "price": "1599",
       "color": "White",
-      "purchased": false,
+      "purchased": true,
       "description": "This car has been in the family for many years. It is time for it to have a new owner. 236,000 miles and it still runs like a charm."
     },
     {
@@ -42,7 +42,7 @@
       "year": "2007",
       "price": "7950",
       "color": "DarkSlateBlue",
-      "purchased": false,
+      "purchased": true,
       "description": "This is the ultimate luxury car. Looks brand new even with 189,350 miles."
     },
     {
