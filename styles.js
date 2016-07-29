@@ -1,11 +1,14 @@
-var CarLot = (function createCar(styles) {
+var CarLot = (function createCar(populate) {
 
-function borderReset (){
 
+populate.colorReset = function(e){
+   e.target.offsetParent.style.borderWidth ="3px"
+   e.target.offsetParent.style.backgroundColor ="white"
 }
 
-function borderChange(card, color){
-  card.style.border = `5px solid ${color}`
-
+populate.borderChange= function(e){
+  e.target.offsetParent.style.borderWidth ="10px"
+  e.target.offsetParent.style.backgroundColor = "#fff8dc"
 }
+return populate
 }) (CarLot || {})

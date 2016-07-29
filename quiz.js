@@ -1,12 +1,11 @@
 var CarLot = (function(populate){
 
-function populatePage (inventory) {
+populate.populatePage = function(inventory) {
   // Loop over the inventory and populate the page
   var container = document.getElementById("carLot");
     console.log("inventory", inventory)
-      var cars = inventory.cars;
-      console.log("cars", cars)
-      cars.forEach(function(car) {
+      inventory.forEach(function(car) {
+        //Create a green For Sale box or a red SOLD box depending on the availability of the car
         if (car.purchased === false) {
          var purchased = `<span class="forSale"> For Sale! </span>`
          } else {
@@ -23,34 +22,24 @@ function populatePage (inventory) {
          </div>
         </div>`
       });
-    //   var border = document.querySelectorAll('.carCard');
-    //   border.forEach((card)=>{
-    //     var cars = inventory.cars
-    //     console.log("cars", cars)
-    //     console.log("border color", cars.color)
-    //     card.style.border = `1px solid ${cars.color}`
-    // })
-    //   borderColor(inventory);
-    activateEvents()
+    populate.activateEvents(inventory)
   }
-  function activateEvents (inventory){
+  //Grab all cards 
+  populate.activateEvents = function(inventory){
     var cards = document.querySelectorAll(".carCard");
     cards.forEach((card)=>{
       card.addEventListener("click", (e)=>{
         console.log(e)
         var input = document.getElementById("inputText");
         input.value = "";
-        console.log("clicked")
         input.focus();
-        // var carCard = e.target.offsetParent;
-        console.log(e.target.offsetParent.style.cssText)
-        events(borderChange(e.target.offsetParent, car.color))
+        populate.borderChange(e);
       })
     })
   }
   // Now that the DOM is loaded, establish all the event listeners needed
-   carLot.activateEvents(populatePage);
-   CarLot.loadInventory(populatePage);
+   // CarLot.activateEvents(populatePage);
+   CarLot.loadInventory(populate.populatePage);
    return populate;
 }) (CarLot || {})
 

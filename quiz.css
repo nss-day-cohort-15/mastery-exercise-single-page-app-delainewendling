@@ -39,3 +39,11 @@
   margin: 10px auto;
   padding: 10px;
 }
+
+.thickBorder {
+  border-width: 10px;
+}
+
+.newBackground {
+  background-color: #fff8dc;
+}
