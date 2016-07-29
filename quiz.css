@@ -1,25 +1,31 @@
+#inputText {
+  width: 500px;
+  height: 50px;
+  margin-left: 15px;
+}
 .carCard {
-  height: 380px;
+  height: 420px;
   margin-bottom: 20px;
 }
 .carInfo {
-  height: 50px;
+  height: 70px;
   text-align: center;
 }
 .description {
-  font-size: 0.5em;
+  font-size: 1em;
   height: 100px;
 }
 .carYear {
   text-align: center;
-  font-size: 0.75em;
+  font-weight: bold;
+  font-size: 1.7em;
 }
 .carsColor {
-  font-size: .45em;
+  font-size: .9em;
   text-align: center;
 }
 .carPrice {
-  font-size: 0.8em;
+  font-size: 1.7em;
   text-align: center;
 }
 .forSale {
