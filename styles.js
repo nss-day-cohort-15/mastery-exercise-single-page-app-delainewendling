@@ -1,10 +1,9 @@
 var CarLot = (function createCar(populate) {
 
 
-populate.colorReset = function(targetParent){
-  // console.log(targetParent)
-   targetParent.style.borderWidth ="3px"
-   targetParent.style.backgroundColor ="white"
+populate.colorReset = function(card){
+   card.style.borderWidth ="3px"
+   card.style.backgroundColor ="white"
 }
 
 populate.borderChange= function(e){

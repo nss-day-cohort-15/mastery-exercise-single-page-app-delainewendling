@@ -28,12 +28,14 @@ populate.populatePage = function(inventory) {
     //Add event listeners to cards
     var targetIndex;
     var targetDescription;
-    var targetParent;
+    var card;
     var cards = document.querySelectorAll(".carCard");
     cards.forEach((card)=>{
+      populate.colorReset(card)
       card.addEventListener("click", (e)=>{
+        console.log(">?",e.currentTarget)
         //Target Parent is the outer div
-        targetParent = e.target.offsetParent
+        card = e.currentTarget
         //This is the description div of the card clicked on
         targetDescription = e.target.offsetParent.children[1];
         targetIndex = targetDescription.id.split("-")[1];
@@ -58,28 +60,21 @@ populate.populatePage = function(inventory) {
     var key = e.which || e.keyCode;
     if (key === 13) {
         console.log("from enter", targetIndex)
-        populate.replaceDescription(targetParent,input,  targetIndex, inventory)
+        populate.addText(targetDescription, card)
       }
     })
     button.addEventListener("click", (e)=>{
-        populate.replaceDescription(targetParent, input, targetIndex, inventory)
+        populate.addText(targetDescription, card)
     })
   }
 
-  populate.replaceDescription = function(targetParent, input, targetIndex, inventory){
-        console.log("the array", inventory)
-        inventory[targetIndex].description = `${input.value}`;
-        // console.log("target object", inventory[targetIndex].description)
-        // console.log("new inventory", inventory)
+  populate.addText = function(targetDescription, card){
+      var input = document.getElementById("inputText");
+        targetDescription.innerHTML = input.value
         input.value= ""
         input.blur();
         input.setAttribute("disabled", true)
-        var carCards = document.querySelectorAll(".carCard");
-        carCards.forEach((card)=>{
-          card.remove()
-        })
-        populate.colorReset(targetParent)
-        populate.populatePage(inventory)
+        populate.colorReset(card)
   }
   // Now that the DOM is loaded, establish all the event listeners needed
    // CarLot.activateEvents(populatePage);
