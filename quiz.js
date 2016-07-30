@@ -3,24 +3,33 @@ var CarLot = (function(populate){
 populate.populatePage = function(inventory) {
   // Loop over the inventory and populate the page
   var container = document.getElementById("carLot");
-      inventory.forEach(function(car, index) {
-        //Create a green For Sale box or a red SOLD box depending on the availability of the car
-        if (car.purchased === false) {
-         var purchased = `<span class="forSale"> For Sale! </span>`
-         } else {
-             var purchased = `<span class="sold"> SOLD </span>`
-         }
-        container.innerHTML += `<div class="col-sm-4">
-          <div class="col-sm-12 carCard" style= 'border: 3px solid ${car.color}'>
-          <h2 class="carInfo"> ${car.make} ${car.model} </h2>
-          <p class="description" id="car-${index}"> ${car.description} </p>
-          <p class="carYear"> ${car.year} </p>
-          <p class="carsColor"> Color: ${car.color} </p>
-          <p class="carPrice"> Price: $${car.price} </p>
-           ${purchased}
-         </div>
-        </div>`
-      });
+  var closeDivNow =3;
+  for (var i = 0; i <inventory.length; i++) {
+    //Create a green For Sale box or a red SOLD box depending on the availability of the car
+    if (inventory[i].purchased === false) {
+        var purchased = `<span class="forSale"> For Sale! </span>`
+    } else {
+        var purchased = `<span class="sold"> SOLD </span>`
+    }
+    if(i%3 == 0 || i==0 ){
+        container.innerHTML += '<div class="row row-eq-height">';
+    }
+    container.innerHTML += `<div class="col-sm-4">
+      <div class="carCard" style= 'border: 3px solid ${inventory[i].color}'>
+      <h2 class="carInfo card-title"> ${inventory[i].make} ${inventory[i].model} </h2>
+      <p class="description card-text" id="car-${i}"> ${inventory[i].description} </p>
+      <p class="carYear card-text"> ${inventory[i].year} </p>
+      <p class="carsColor card-text"> Color: ${inventory[i].color} </p>
+      <p class="carPrice card-text"> Price: $${inventory[i].price} </p>
+       ${purchased}
+     </div>
+     </div>`
+      if(i%3 == 0 || i==0 && i == closeDivNow){
+        closeDivNow = closeDivNow + i;
+        container.innerHTML += '</div>';
+      }
+      container.innerHTML += '</div>'
+    }
     populate.activateEvents(inventory)
   }
   //Grab all cards and put an event listener on each one. When one is clicked the input text is cleared and focused on. The border change function is also called.
@@ -32,13 +41,11 @@ populate.populatePage = function(inventory) {
     var cards = document.querySelectorAll(".carCard");
     cards.forEach((card)=>{
       card.addEventListener("click", (e)=>{
-        console.log(">?",e.currentTarget)
         //Target Parent is the outer div
         card = e.currentTarget
         //This is the description div of the card clicked on
-        targetDescription = e.target.offsetParent.children[1];
+        targetDescription = e.currentTarget.children[1];
         targetIndex = targetDescription.id.split("-")[1];
-        console.log("from click", targetIndex)
         // console.log("id", targetDescription.id)
         var input = document.getElementById("inputText");
         input.removeAttribute("disabled")
