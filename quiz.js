@@ -10,8 +10,8 @@ populate.populatePage = function(inventory) {
          } else {
              var purchased = `<span class="sold"> SOLD </span>`
          }
-        container.innerHTML += `<div class="col-sm-4 carCard">
-          <div class="col-sm-12" style= 'border: 3px solid ${car.color}'>
+        container.innerHTML += `<div class="col-sm-4">
+          <div class="col-sm-12 carCard" style= 'border: 3px solid ${car.color}'>
           <h2 class="carInfo"> ${car.make} ${car.model} </h2>
           <p class="description" id="car-${index}"> ${car.description} </p>
           <p class="carYear"> ${car.year} </p>
@@ -24,14 +24,13 @@ populate.populatePage = function(inventory) {
     populate.activateEvents(inventory)
   }
   //Grab all cards and put an event listener on each one. When one is clicked the input text is cleared and focused on. The border change function is also called.
-  populate.activateEvents= function(inventory){
+  populate.activateEvents = function(inventory){
     //Add event listeners to cards
     var targetIndex;
     var targetDescription;
     var card;
     var cards = document.querySelectorAll(".carCard");
     cards.forEach((card)=>{
-      populate.colorReset(card)
       card.addEventListener("click", (e)=>{
         console.log(">?",e.currentTarget)
         //Target Parent is the outer div
@@ -50,6 +49,7 @@ populate.populatePage = function(inventory) {
         input.focus();
         input.setSelectionRange(input.value.length,input.value.length);
         //calls the functions that will change the border of the clicked div and add text to the appropriate description
+        populate.colorReset()
         populate.borderChange(e);
         })
       })
