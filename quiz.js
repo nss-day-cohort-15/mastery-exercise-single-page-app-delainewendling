@@ -63,6 +63,9 @@ populate.populatePage = function(inventory) {
     //Add event listeners to button and text input
     var button = document.querySelector(".submit");
     var input = document.getElementById("inputText");
+    input.addEventListener('keyup', (e)=>{
+      targetDescription.innerText = input.value
+    })
     input.addEventListener("keypress", (e)=>{
     var key = e.which || e.keyCode;
     if (key === 13) {
